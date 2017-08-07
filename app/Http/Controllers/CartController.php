@@ -63,7 +63,7 @@ class CartController extends Controller
         //
 
     }
-    public function addItem($id) 
+    public function addItem($id)
     {
       //
       $product=Product::find($id);

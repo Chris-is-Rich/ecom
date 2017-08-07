@@ -17,7 +17,8 @@ Route::get('/', function () {
 */
 Route::get('/', 'FrontController@index')->name('home');
 Route::get('/shirts', 'FrontController@shirts')->name('shirts');
-Route::get('/shirt', 'FrontController@shirt')->name('shirt');
+Route::get('/shirt/{id}', 'FrontController@shirt')->name('shirt');
+
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('home');
@@ -45,3 +46,8 @@ Route::get('checkout','CheckoutController@step1');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('shipping-info','CheckoutController@shipping')->name('checkout.shipping');
 });
+
+Route::get('payment','CheckoutController@payment')->name('checkout.payment');
+Route::post('store-payment','CheckoutController@storePayment')->name('payment.store');
+
+
